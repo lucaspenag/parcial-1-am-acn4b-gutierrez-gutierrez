@@ -5,15 +5,115 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/encabezado"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/margen_pantalla"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_portada"
+            android:layout_width="@dimen/portada_ancho"
+            android:layout_height="@dimen/portada_alto"
+            android:contentDescription="@string/desc_portada"
+            android:scaleType="centerCrop"
+            android:src="@drawable/portada_juego"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/espacio_grande"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_titulo_juego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/juego_titulo"
+                android:textColor="@color/texto_primario"
+                android:textSize="@dimen/texto_titulo"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_chico"
+                android:text="@string/juego_desarrollador_anio"
+                android:textColor="@color/texto_secundario"
+                android:textSize="@dimen/texto_cuerpo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/juego_genero"
+                android:textColor="@color/texto_secundario"
+                android:textSize="@dimen/texto_cuerpo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/juego_plataformas"
+                android:textColor="@color/texto_secundario"
+                android:textSize="@dimen/texto_cuerpo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_chico"
+                android:text="@string/juego_horas"
+                android:textColor="@color/acento"
+                android:textSize="@dimen/texto_cuerpo"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_chico"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/etiqueta_estado"
+                    android:textColor="@color/texto_secundario"
+                    android:textSize="@dimen/texto_cuerpo"/>
+
+                <TextView
+                    android:id="@+id/tv_estado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacio_chico"
+                    android:text="@string/estado_jugando"
+                    android:textColor="@color/estado_jugando"
+                    android:textSize="@dimen/texto_cuerpo"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_sinopsis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:ellipsize="end"
+        android:lineSpacingExtra="@dimen/interlineado"
+        android:maxLines="3"
+        android:text="@string/juego_sinopsis"
+        android:textColor="@color/texto_secundario"
+        android:textSize="@dimen/texto_cuerpo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/encabezado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
