@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">BitacoraGamer</string>
+
+    <string name="juego_titulo">Hollow Knight</string>
+    <string name="juego_desarrollador_anio">Team Cherry - 2017</string>
+    <string name="juego_genero">Metroidvania - Accion y aventura</string>
+    <string name="juego_plataformas">PC - Switch - PS4 - Xbox One</string>
+    <string name="juego_horas">12,5 h jugadas</string>
+    <string name="juego_sinopsis">Debajo del pueblo de Bocasucia yace Hallownes, un antiguo reino de insectos en ruinas. Como el Caballero, un pequeño guerrero sin nombre, vas a recorrer cavernas, ciudades olvidadas y jardines venenosos, enfretarte a decenas de jefes y descubrir qué provocó la caída del reino.</string>
+    <string name="desc_portada">Portada de Hollow Knight</string>
+
+    <string name="etiqueta_estado">Estado:</string>
+    <string name="estado_jugando">Jugando</string>
+    <string name="estado_completado">Completado</string>
+    <string name="estado_pausado">Pausado</string>
+    <string name="estado_sin_cambios">El juego ya está en ese estado</string>
+    <string name="entrada_cambio_estado">Cambié el estado a %1$s</string>
+
+    <string name="ver_mas">Ver más</string>
+    <string name="ver_menos">Ver menos</string>
+
+    <string name="titulo_bitacora">Bitácora</string>
+    <string name="titulo_bitacora_contador">Bitácora (%1$d)</string>
+    <string name="ayuda_borrar">Tocá una entrada para borrarla</string>
+    <string name="bitacora_vacia">Todavía no registraste nada. ¿Qué hiciste hoy en el juego?</string>
+    <string name="hint_entrada">¿Qué hiciste hoy?</string>
+    <string name="agregar">Agregar</string>
+    <string name="error_entrada_vacia">Escribí algo antes de agregar</string>
+    <string name="entrada_agregada">Entrada agregada</string>
+    <string name="entrada_eliminada">Entrada eliminada</string>
+    <string name="formato_fecha" translatable="false">dd/MM/yyyy</string>
+
+    <string name="ejemplo_1_fecha">25/09/2026</string>
+    <string name="ejemplo_1_texto">Derroté al Falso Caballero. Me costó 6 intentos</string>
+    <string name="ejemplo_2_fecha">26/09/2026</string>
+    <string name="ejemplo_2_texto">Llegué a la Ciudad de Lágrimas y me perdí 40 minutos sin mapa.</string>
 </resources>
