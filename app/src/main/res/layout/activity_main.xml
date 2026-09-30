@@ -116,4 +116,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/encabezado" />
 
+    <LinearLayout
+        android:id="@+id/botones_estado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_medio"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_sinopsis">
+
+        <Button
+            android:id="@+id/btn_jugando"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/espacio_chico"
+            android:layout_weight="1"
+            android:backgroundTint="@color/superficie"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_boton"
+            android:paddingEnd="@dimen/padding_boton"
+            android:text="@string/estado_jugando"
+            android:textColor="@color/estado_jugando"
+            android:textSize="@dimen/texto_boton"/>
+
+        <Button
+            android:id="@+id/btn_completado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/espacio_chico"
+            android:layout_weight="1"
+            android:backgroundTint="@color/superficie"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_boton"
+            android:paddingEnd="@dimen/padding_boton"
+            android:text="@string/estado_completado"
+            android:textColor="@color/estado_completado"
+            android:textSize="@dimen/texto_boton"/>
+
+        <Button
+            android:id="@+id/btn_pausado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/espacio_chico"
+            android:layout_weight="1"
+            android:backgroundTint="@color/superficie"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_boton"
+            android:paddingEnd="@dimen/padding_boton"
+            android:text="@string/estado_pausado"
+            android:textColor="@color/estado_pausado"
+            android:textSize="@dimen/texto_boton"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
