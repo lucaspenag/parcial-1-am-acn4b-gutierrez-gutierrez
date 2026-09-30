@@ -170,4 +170,47 @@
             android:textColor="@color/estado_pausado"
             android:textSize="@dimen/texto_boton"/>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/fila_titulo_bitacora"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_grande"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/botones_estado">
+
+        <TextView
+            android:id="@+id/tv_titulo_bitacora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/titulo_bitacora"
+            android:textColor="@color/texto_primario"
+            android:textSize="@dimen/texto_subtitulo"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_bitacora"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_medio"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:layout_marginBottom="@dimen/espacio_medio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fila_titulo_bitacora">
+
+        <LinearLayout
+            android:id="@+id/contenedor_entradas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
