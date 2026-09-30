@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout contenedorEntradas;
     private EditText etEntrada;
 
+    private TextView tvTituloBitacora;
+    private TextView tvVacio;
+    private int cantidadEntradas = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         contenedorEntradas = findViewById(R.id.contenedor_entradas);
         etEntrada = findViewById(R.id.et_entrada);
+        tvTituloBitacora = findViewById(R.id.tv_titulo_bitacora);
+        tvVacio = findViewById(R.id.tv_vacio);
 
         agregarEntrada(getString(R.string.ejemplo_1_fecha), getString(R.string.ejemplo_1_texto));
         agregarEntrada(getString(R.string.ejemplo_2_fecha), getString(R.string.ejemplo_2_texto));
@@ -90,10 +96,22 @@ public class MainActivity extends AppCompatActivity {
         tarjeta.addView(tvTexto);
 
         contenedorEntradas.addView(tarjeta, 0);
+
+        cantidadEntradas++;
+        actualizarContador();
     }
 
     private String fechaDeHoy() {
         SimpleDateFormat formato = new SimpleDateFormat(getString(R.string.formato_fecha), Locale.getDefault());
         return formato.format(new Date());
+    }
+
+    private void actualizarContador() {
+        tvTituloBitacora.setText(getString(R.string.titulo_bitacora_contador, cantidadEntradas));
+        if (cantidadEntradas == 0) {
+            tvVacio.setVisibility(View.VISIBLE);
+        } else {
+            tvVacio.setVisibility(View.GONE);
+        }
     }
 }
