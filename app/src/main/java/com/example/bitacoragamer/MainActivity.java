@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvVacio;
     private int cantidadEntradas = 0;
 
+    private TextView tvEstado;
+    private int estadoActual = R.string.estado_jugando;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         agregarEntrada(getString(R.string.ejemplo_2_fecha), getString(R.string.ejemplo_2_texto));
 
         configurarBotonAgregar();
+        configurarBotonesEstado();
     }
 
     private void configurarBotonAgregar() {
@@ -113,5 +117,41 @@ public class MainActivity extends AppCompatActivity {
         } else {
             tvVacio.setVisibility(View.GONE);
         }
+    }
+
+    private void configurarBotonesEstado() {
+        tvEstado = findViewById(R.id.tv_estado);
+        Button btnJugando = findViewById(R.id.btn_jugando);
+        Button btnCompletado = findViewById(R.id.btn_completado);
+        Button btnPausado = findViewById(R.id.btn_pausado);
+
+        btnJugando.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                cambiarEstado(R.string.estado_jugando, R.color.estado_jugando);
+            }
+        });
+        btnCompletado.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                cambiarEstado(R.string.estado_completado, R.color.estado_completado);
+            }
+        });
+        btnPausado.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                cambiarEstado(R.string.estado_pausado, R.color.estado_pausado);
+            }
+        });
+    }
+    private void cambiarEstado(int textoEstado, int colorEstado) {
+        if (textoEstado == estadoActual) {
+            Toast.makeText(this, R.string.estado_sin_cambios, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        estadoActual = textoEstado;
+        tvEstado.setText(textoEstado);
+        tvEstado.setTextColor(getColor(colorEstado));
+        agregarEntrada(fechaDeHoy(), getString(R.string.entrada_cambio_estado, getString(textoEstado)));
     }
 }
