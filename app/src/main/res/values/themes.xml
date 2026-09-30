@@ -3,6 +3,10 @@
     <style name="Base.Theme.BitacoraGamer" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primario</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:colorBackground">@color/fondo</item>
+        <item name="android:windowBackground">@color/fondo</item>
     </style>
 
     <style name="Theme.BitacoraGamer" parent="Base.Theme.BitacoraGamer" />
