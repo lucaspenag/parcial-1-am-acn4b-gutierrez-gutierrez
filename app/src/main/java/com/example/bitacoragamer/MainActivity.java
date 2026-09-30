@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                String texto = etEntrada.getText().toString().trim();
+
+               if (texto.isEmpty()) {
+                   Toast.makeText(MainActivity.this, R.string.error_entrada_vacia, Toast.LENGTH_SHORT).show();
+                   return;
+               }
                agregarEntrada(fechaDeHoy(), texto);
                etEntrada.setText("");
+               Toast.makeText(MainActivity.this, R.string.entrada_agregada, Toast.LENGTH_SHORT).show();
            }
         });
     }
