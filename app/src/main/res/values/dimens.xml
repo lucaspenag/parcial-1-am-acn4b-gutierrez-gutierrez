@@ -3,7 +3,7 @@
     <dimen name="margen_pantalla">16dp</dimen>
     <dimen name="espacio_chico">4dp</dimen>
     <dimen name="espacio_medio">8dp</dimen>
-    <dimen name="espacio_grande">16p</dimen>
+    <dimen name="espacio_grande">16dp</dimen>
 
     <dimen name="portada_ancho">96dp</dimen>
     <dimen name="portada_alto">128dp</dimen>
