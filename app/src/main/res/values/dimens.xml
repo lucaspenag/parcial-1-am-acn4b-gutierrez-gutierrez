@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margen_pantalla">16dp</dimen>
+    <dimen name="espacio_chico">4dp</dimen>
+    <dimen name="espacio_medio">8dp</dimen>
+    <dimen name="espacio_grande">16p</dimen>
+
+    <dimen name="portada_ancho">96dp</dimen>
+    <dimen name="portada_alto">128dp</dimen>
+
+    <dimen name="padding_entrada">12dp</dimen>
+    <dimen name="padding_boton">4dp</dimen>
+    <dimen name="radio_tarjeta">12dp</dimen>
+    <dimen name="borde_tarjeta">1dp</dimen>
+
+    <dimen name="texto_titulo">22sp</dimen>
+    <dimen name="texto_subtitulo">18sp</dimen>
+    <dimen name="texto_cuerpo">15sp</dimen>
+    <dimen name="texto_boton">13sp</dimen>
+    <dimen name="texto_chico">12sp</dimen>
+    <dimen name="interlineado">2sp</dimen>
+</resources>
