@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         tarjeta.setOrientation(LinearLayout.VERTICAL);
         int padding = getResources().getDimensionPixelSize(R.dimen.padding_entrada);
         tarjeta.setPadding(padding, padding, padding, padding);
-        tarjeta.setBackgroundColor(getColor(R.color.superficie));
+        tarjeta.setBackgroundResource(R.drawable.fondo_entrada);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
