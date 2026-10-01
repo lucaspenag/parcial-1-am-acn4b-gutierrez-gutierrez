@@ -99,6 +99,16 @@ public class MainActivity extends AppCompatActivity {
         tarjeta.addView(tvFecha);
         tarjeta.addView(tvTexto);
 
+        tarjeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contenedorEntradas.removeView(v);
+                cantidadEntradas--;
+                actualizarContador();
+                Toast.makeText(MainActivity.this, R.string.entrada_eliminada, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         contenedorEntradas.addView(tarjeta, 0);
 
         cantidadEntradas++;
