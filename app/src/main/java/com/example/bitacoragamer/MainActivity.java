@@ -5,6 +5,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvEstado;
     private int estadoActual = R.string.estado_jugando;
 
+    private static final int LINEA_SINOPSIS = 3;
+    private TextView tvSinopsis;
+    private TextView tvVerMas;
+    private boolean sinopsisExpandida = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         configurarBotonAgregar();
         configurarBotonesEstado();
+        configurarSinopsis();
     }
 
     private void configurarBotonAgregar() {
@@ -163,5 +171,29 @@ public class MainActivity extends AppCompatActivity {
         tvEstado.setText(textoEstado);
         tvEstado.setTextColor(getColor(colorEstado));
         agregarEntrada(fechaDeHoy(), getString(R.string.entrada_cambio_estado, getString(textoEstado)));
+    }
+
+    private void configurarSinopsis() {
+        tvSinopsis = findViewById(R.id.tv_sinopsis);
+        tvVerMas = findViewById(R.id.tv_ver_mas);
+        ImageView imgPortada = findViewById(R.id.img_portada);
+
+        View.OnClickListener alternarSinopsis = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sinopsisExpandida = !sinopsisExpandida;
+                if (sinopsisExpandida) {
+                    tvSinopsis.setMaxLines(Integer.MAX_VALUE);
+                    tvVerMas.setText(R.string.ver_menos);
+                } else {
+                    tvSinopsis.setMaxLines(LINEA_SINOPSIS);
+                    tvVerMas.setText(R.string.ver_mas);
+                }
+            }
+        };
+
+        imgPortada.setOnClickListener(alternarSinopsis);
+        tvSinopsis.setOnClickListener(alternarSinopsis);
+        tvVerMas.setOnClickListener(alternarSinopsis);
     }
 }

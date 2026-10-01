@@ -116,6 +116,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/encabezado" />
 
+    <TextView
+        android:id="@+id/tv_ver_mas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:paddingTop="@dimen/espacio_chico"
+        android:paddingBottom="@dimen/espacio_chico"
+        android:text="@string/ver_mas"
+        android:textColor="@color/acento"
+        android:textSize="@dimen/texto_chico"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_sinopsis" />
+
     <LinearLayout
         android:id="@+id/botones_estado"
         android:layout_width="0dp"
@@ -126,7 +140,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_sinopsis">
+        app:layout_constraintTop_toBottomOf="@id/tv_ver_mas">
 
         <Button
             android:id="@+id/btn_jugando"
