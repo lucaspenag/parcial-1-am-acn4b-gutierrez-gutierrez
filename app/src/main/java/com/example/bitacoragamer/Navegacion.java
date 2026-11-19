@@ -1,6 +1,7 @@
 package com.example.bitacoragamer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +31,22 @@ public class Navegacion {
                 }
             }
         });
+        navDiario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrir(actividad, seccionActual, DIARIO, DiarioActivity.class);
+            }
+        });
+    }
+
+    private static void abrir(Activity actividad, int seccionActual, int seccionDestino, Class<?> pantalla) {
+        if (seccionActual == seccionDestino) {
+            return;
+        }
+        actividad.startActivity(new Intent(actividad, pantalla));
+        if (seccionActual != BIBLIOTECA) {
+            actividad.finish();
+        }
     }
 
     private static void marcar(Activity actividad, TextView item, boolean actual) {
