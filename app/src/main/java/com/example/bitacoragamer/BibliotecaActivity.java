@@ -31,10 +31,7 @@ import java.util.List;
 
 public class BibliotecaActivity extends AppCompatActivity {
 
-
     private String filtroActual = null;
-
-
     private List<JuegoGuardado> juegos = new ArrayList<>();
 
     private LinearLayout contenedorJuegos;
@@ -60,6 +57,7 @@ public class BibliotecaActivity extends AppCompatActivity {
 
         configurarFiltros();
         configurarSalir();
+        Navegacion.configurar(this, Navegacion.BIBLIOTECA);
     }
 
 
@@ -73,7 +71,6 @@ public class BibliotecaActivity extends AppCompatActivity {
         Repositorio.obtenerJuegos(new Repositorio.Resultado<List<JuegoGuardado>>() {
             @Override
             public void alTerminar(List<JuegoGuardado> datos) {
-
                 if (isDestroyed()) {
                     return;
                 }

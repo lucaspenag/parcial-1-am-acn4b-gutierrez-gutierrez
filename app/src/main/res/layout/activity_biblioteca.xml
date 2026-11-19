@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- Pantalla: Biblioteca (inicio de la app) -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -131,7 +131,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filtros" />
 
-
     <ScrollView
         android:id="@+id/scroll_biblioteca"
         android:layout_width="0dp"
@@ -139,7 +138,7 @@
         android:layout_marginStart="@dimen/margen_pantalla"
         android:layout_marginTop="@dimen/espacio_medio"
         android:layout_marginEnd="@dimen/margen_pantalla"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barra_navegacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filtros">
@@ -166,7 +165,16 @@
         android:text="@string/mas"
         android:textColor="@color/white"
         android:textSize="@dimen/texto_boton_flotante"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barra_navegacion"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+        android:id="@+id/barra_navegacion"
+        layout="@layout/barra_navegacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
