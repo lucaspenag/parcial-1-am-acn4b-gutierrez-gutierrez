@@ -6,6 +6,7 @@
     <color name="fondo">#FF121218</color>
     <color name="superficie">#FF23232F</color>
     <color name="borde">#FF34344A</color>
+    <color name="fondo_portada">#FF2E2E3E</color>
 
     <color name="primario">#FF7C4DFF</color>
     <color name="acento">#FFB388FF</color>

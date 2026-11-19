@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">BitacoraGamer</string>
+    <string name="app_name">Bitácora Gamer</string>
 
     <string name="juego_titulo">Hollow Knight</string>
     <string name="juego_desarrollador_anio">Team Cherry - 2017</string>
-    <string name="juego_genero">Metroidvania - Accion y aventura</string>
+    <string name="juego_genero">Metroidvania - Acción y aventura</string>
     <string name="juego_plataformas">PC - Switch - PS4 - Xbox One</string>
     <string name="juego_horas">12,5 h jugadas</string>
-    <string name="juego_sinopsis">Debajo del pueblo de Bocasucia yace Hallownes, un antiguo reino de insectos en ruinas. Como el Caballero, un pequeño guerrero sin nombre, vas a recorrer cavernas, ciudades olvidadas y jardines venenosos, enfretarte a decenas de jefes y descubrir qué provocó la caída del reino.</string>
+    <string name="juego_sinopsis">Debajo del pueblo de Bocasucia yace Hallownest, un antiguo reino de insectos en ruinas. Como el Caballero, un pequeño guerrero sin nombre, vas a recorrer cavernas, ciudades olvidadas y jardines venenosos, enfrentarte a decenas de jefes y descubrir qué provocó la caída del reino.</string>
     <string name="desc_portada">Portada de Hollow Knight</string>
 
     <string name="etiqueta_estado">Estado:</string>
@@ -31,7 +31,81 @@
     <string name="formato_fecha" translatable="false">dd/MM/yyyy</string>
 
     <string name="ejemplo_1_fecha">25/09/2026</string>
-    <string name="ejemplo_1_texto">Derroté al Falso Caballero. Me costó 6 intentos</string>
+    <string name="ejemplo_1_texto">Derroté al Falso Caballero. Me costó 6 intentos.</string>
     <string name="ejemplo_2_fecha">26/09/2026</string>
     <string name="ejemplo_2_texto">Llegué a la Ciudad de Lágrimas y me perdí 40 minutos sin mapa.</string>
+
+    <string name="volver">‹ Volver</string>
+    <string name="cargando">Cargando…</string>
+    <string name="desc_portada_juego">Portada del juego</string>
+    <string name="error_cargar">No pudimos cargar tus datos. Revisá la conexión.</string>
+    <string name="error_guardar">No pudimos guardar el cambio. Probá de nuevo.</string>
+    <string name="formato_hora" translatable="false">HH:mm</string>
+    <string name="cantidad_entradas">%1$d entradas</string>
+    <string name="una_entrada">1 entrada</string>
+
+    <string name="login_subtitulo">Tu diario de partidas</string>
+    <string name="hint_email">Mail</string>
+    <string name="hint_contrasenia">Contraseña (mínimo 6 caracteres)</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="error_campos_vacios">Completá el mail y la contraseña</string>
+    <string name="error_contrasenia_corta">La contraseña tiene que tener al menos 6 caracteres</string>
+    <string name="error_login">No pudimos ingresar. Revisá el mail y la contraseña.</string>
+    <string name="error_cuenta_existente">Ya existe una cuenta con ese mail. Tocá Ingresar.</string>
+    <string name="error_registro">No pudimos crear la cuenta. Revisá que el mail sea válido.</string>
+    <string name="bienvenida">¡Hola, %1$s!</string>
+
+    <string name="titulo_biblioteca">Mi biblioteca</string>
+    <string name="salir">Salir</string>
+    <string name="sesion_cerrada">Cerraste sesión</string>
+    <string name="filtro_todos">Todos</string>
+    <string name="filtro_jugando">Jugando</string>
+    <string name="filtro_completados">Completados</string>
+    <string name="filtro_pausados">Pausados</string>
+    <string name="biblioteca_vacia">Tu biblioteca está vacía. Tocá + para agregar tu primer juego.</string>
+    <string name="biblioteca_vacia_filtro">No tenés juegos en este estado.</string>
+    <string name="mas" translatable="false">+</string>
+    <string name="desc_agregar_juego">Agregar un juego</string>
+
+    <string name="nav_biblioteca">Biblioteca</string>
+    <string name="nav_diario">Diario</string>
+    <string name="nav_estadisticas">Estadísticas</string>
+
+    <string name="titulo_buscar">Buscar juego</string>
+    <string name="hint_buscar">Nombre del juego</string>
+    <string name="buscar">Buscar</string>
+    <string name="buscar_inicial">Escribí el nombre de un juego y tocá Buscar.</string>
+    <string name="sin_resultados">No encontramos juegos con ese nombre.</string>
+    <string name="error_buscar_vacio">Escribí algo para buscar</string>
+    <string name="error_api">No pudimos conectarnos con RAWG. Revisá la conexión.</string>
+    <string name="error_api_key">RAWG rechazó la API key. Revisá res/values/api.xml.</string>
+    <string name="agregar_juego">Agregar</string>
+    <string name="ver_juego">Ver</string>
+    <string name="juego_agregado">%1$s se agregó a tu biblioteca</string>
+    <string name="sin_fecha">Sin fecha</string>
+    <string name="dos_datos">%1$s - %2$s</string>
+    <string name="fuente_rawg">Datos de juegos provistos por RAWG.io</string>
+
+    <string name="sin_datos">Sin datos</string>
+    <string name="sin_sinopsis">Este juego no tiene descripción en RAWG.</string>
+    <string name="puntaje_rawg">★ %1$.1f / 5 en RAWG</string>
+    <string name="error_detalle">No pudimos traer la información del juego.</string>
+
+    <string name="titulo_diario">Diario</string>
+    <string name="subtitulo_diario">Todo lo que jugaste, de lo más nuevo a lo más viejo</string>
+    <string name="diario_vacio">Todavía no hay entradas. Entrá a un juego de tu biblioteca y contá qué hiciste.</string>
+    <string name="hoy">Hoy</string>
+    <string name="ayer">Ayer</string>
+
+    <string name="titulo_estadisticas">Estadísticas</string>
+    <string name="stat_juegos">Juegos</string>
+    <string name="stat_completados">Completados</string>
+    <string name="stat_entradas">Entradas</string>
+    <string name="stat_racha">Racha</string>
+    <string name="racha_dias">%1$d días</string>
+    <string name="racha_un_dia">1 día</string>
+    <string name="titulo_por_estado">Juegos por estado</string>
+    <string name="titulo_mas_registrado">El que más registraste</string>
+    <string name="sin_mas_registrado">Cuando cargues entradas, acá vas a ver tu juego más registrado.</string>
 </resources>

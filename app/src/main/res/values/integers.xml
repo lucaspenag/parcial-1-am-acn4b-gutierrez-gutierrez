@@ -2,4 +2,5 @@
 <resources>
     <integer name="lineas_sinopsis">3</integer>
     <integer name="lineas_max_entrada">3</integer>
+    <integer name="resultados_busqueda">20</integer>
 </resources>

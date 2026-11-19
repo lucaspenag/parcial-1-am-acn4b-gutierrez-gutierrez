@@ -4,14 +4,31 @@
     <dimen name="espacio_chico">4dp</dimen>
     <dimen name="espacio_medio">8dp</dimen>
     <dimen name="espacio_grande">16dp</dimen>
+    <dimen name="espacio_enorme">32dp</dimen>
 
     <dimen name="portada_ancho">96dp</dimen>
     <dimen name="portada_alto">128dp</dimen>
+    <dimen name="portada_chica_ancho">54dp</dimen>
+    <dimen name="portada_chica_alto">72dp</dimen>
+    <dimen name="portada_mini_ancho">36dp</dimen>
+    <dimen name="portada_mini_alto">48dp</dimen>
 
     <dimen name="padding_entrada">12dp</dimen>
     <dimen name="padding_boton">4dp</dimen>
     <dimen name="radio_tarjeta">12dp</dimen>
     <dimen name="borde_tarjeta">1dp</dimen>
+    <dimen name="radio_portada">6dp</dimen>
+
+    <dimen name="ancho_max_formulario">360dp</dimen>
+
+    <dimen name="boton_flotante">56dp</dimen>
+    <dimen name="texto_boton_flotante">28sp</dimen>
+
+    <dimen name="alto_barra_navegacion">64dp</dimen>
+    <dimen name="icono_navegacion">24dp</dimen>
+
+    <dimen name="alto_barra_estado">10dp</dimen>
+    <dimen name="ancho_etiqueta_estado">96dp</dimen>
 
     <dimen name="texto_titulo">22sp</dimen>
     <dimen name="texto_subtitulo">18sp</dimen>
@@ -19,4 +36,7 @@
     <dimen name="texto_boton">13sp</dimen>
     <dimen name="texto_chico">12sp</dimen>
     <dimen name="interlineado">2sp</dimen>
+    <dimen name="texto_logo">32sp</dimen>
+    <dimen name="texto_numero">28sp</dimen>
+    <dimen name="texto_navegacion">12sp</dimen>
 </resources>
