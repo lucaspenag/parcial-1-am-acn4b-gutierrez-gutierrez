@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".LoginActivity">
+
+
+    <LinearLayout
+        android:id="@+id/formulario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="@dimen/ancho_max_formulario">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/texto_primario"
+            android:textSize="@dimen/texto_logo"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_chico"
+            android:layout_marginBottom="@dimen/espacio_enorme"
+            android:gravity="center"
+            android:text="@string/login_subtitulo"
+            android:textColor="@color/acento"
+            android:textSize="@dimen/texto_cuerpo" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/texto_primario"
+            android:textColorHint="@color/texto_tenue"
+            android:textSize="@dimen/texto_cuerpo" />
+
+        <EditText
+            android:id="@+id/et_contrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_medio"
+            android:autofillHints="password"
+            android:hint="@string/hint_contrasenia"
+            android:inputType="textPassword"
+            android:textColor="@color/texto_primario"
+            android:textColorHint="@color/texto_tenue"
+            android:textSize="@dimen/texto_cuerpo" />
+
+        <Button
+            android:id="@+id/btn_ingresar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_grande"
+            android:backgroundTint="@color/primario"
+            android:text="@string/ingresar"
+            android:textColor="@color/white"
+            android:textSize="@dimen/texto_boton" />
+
+        <Button
+            android:id="@+id/btn_crear_cuenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espacio_chico"
+            android:backgroundTint="@color/superficie"
+            android:text="@string/crear_cuenta"
+            android:textColor="@color/acento"
+            android:textSize="@dimen/texto_boton" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
