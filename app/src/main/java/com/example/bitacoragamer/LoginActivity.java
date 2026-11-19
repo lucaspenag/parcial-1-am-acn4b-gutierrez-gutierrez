@@ -126,11 +126,10 @@ public class LoginActivity extends AppCompatActivity {
         btnCrearCuenta.setEnabled(habilitados);
     }
 
-
     private void irALaApp() {
         String email = auth.getCurrentUser().getEmail();
         Toast.makeText(this, getString(R.string.bienvenida, email), Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, BibliotecaActivity.class));
         finish();
     }
 }

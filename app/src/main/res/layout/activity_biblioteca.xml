@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".BibliotecaActivity">
+
+
+    <LinearLayout
+        android:id="@+id/encabezado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/margen_pantalla"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/titulo_biblioteca"
+            android:textColor="@color/texto_primario"
+            android:textSize="@dimen/texto_titulo"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_salir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/espacio_medio"
+            android:text="@string/salir"
+            android:textColor="@color/acento"
+            android:textSize="@dimen/texto_cuerpo"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/filtros"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_medio"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/encabezado">
+
+        <Button
+            android:id="@+id/btn_filtro_todos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/espacio_chico"
+            android:layout_weight="1"
+            android:backgroundTint="@color/primario"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_boton"
+            android:paddingEnd="@dimen/padding_boton"
+            android:text="@string/filtro_todos"
+            android:textColor="@color/white"
+            android:textSize="@dimen/texto_chico" />
+
+        <Button
+            android:id="@+id/btn_filtro_jugando"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/espacio_chico"
+            android:layout_marginEnd="@dimen/espacio_chico"
+            android:layout_weight="1"
+            android:backgroundTint="@color/superficie"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_boton"
+            android:paddingEnd="@dimen/padding_boton"
+            android:text="@string/filtro_jugando"
+            android:textColor="@color/estado_jugando"
+            android:textSize="@dimen/texto_chico" />
+
+        <Button
+            android:id="@+id/btn_filtro_completados"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/espacio_chico"
+            android:layout_marginEnd="@dimen/espacio_chico"
+            android:layout_weight="1"
+            android:backgroundTint="@color/superficie"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_boton"
+            android:paddingEnd="@dimen/padding_boton"
+            android:text="@string/filtro_completados"
+            android:textColor="@color/estado_completado"
+            android:textSize="@dimen/texto_chico" />
+
+        <Button
+            android:id="@+id/btn_filtro_pausados"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/espacio_chico"
+            android:layout_weight="1"
+            android:backgroundTint="@color/superficie"
+            android:maxLines="1"
+            android:paddingStart="@dimen/padding_boton"
+            android:paddingEnd="@dimen/padding_boton"
+            android:text="@string/filtro_pausados"
+            android:textColor="@color/estado_pausado"
+            android:textSize="@dimen/texto_chico" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_vacio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_enorme"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:gravity="center"
+        android:text="@string/cargando"
+        android:textColor="@color/texto_tenue"
+        android:textSize="@dimen/texto_cuerpo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filtros" />
+
+
+    <ScrollView
+        android:id="@+id/scroll_biblioteca"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_medio"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filtros">
+
+
+        <LinearLayout
+            android:id="@+id/contenedor_juegos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/boton_flotante" />
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/btn_agregar_juego"
+        android:layout_width="@dimen/boton_flotante"
+        android:layout_height="@dimen/boton_flotante"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:layout_marginBottom="@dimen/margen_pantalla"
+        android:background="@drawable/fondo_boton_flotante"
+        android:contentDescription="@string/desc_agregar_juego"
+        android:gravity="center"
+        android:text="@string/mas"
+        android:textColor="@color/white"
+        android:textSize="@dimen/texto_boton_flotante"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
