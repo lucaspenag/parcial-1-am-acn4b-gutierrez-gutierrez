@@ -32,6 +32,7 @@ import java.util.List;
 public class BibliotecaActivity extends AppCompatActivity {
 
     private String filtroActual = null;
+
     private List<JuegoGuardado> juegos = new ArrayList<>();
 
     private LinearLayout contenedorJuegos;
@@ -57,6 +58,7 @@ public class BibliotecaActivity extends AppCompatActivity {
 
         configurarFiltros();
         configurarSalir();
+        configurarBotonAgregar();
         Navegacion.configurar(this, Navegacion.BIBLIOTECA);
     }
 
@@ -71,6 +73,7 @@ public class BibliotecaActivity extends AppCompatActivity {
         Repositorio.obtenerJuegos(new Repositorio.Resultado<List<JuegoGuardado>>() {
             @Override
             public void alTerminar(List<JuegoGuardado> datos) {
+
                 if (isDestroyed()) {
                     return;
                 }
@@ -210,9 +213,20 @@ public class BibliotecaActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(BibliotecaActivity.this, R.string.sesion_cerrada, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(BibliotecaActivity.this, LoginActivity.class);
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
+            }
+        });
+    }
+
+
+    private void configurarBotonAgregar() {
+        findViewById(R.id.btn_agregar_juego).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BibliotecaActivity.this, BuscarActivity.class));
             }
         });
     }
