@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".EstadisticasActivity">
+
+    <TextView
+        android:id="@+id/tv_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/margen_pantalla"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        android:text="@string/titulo_estadisticas"
+        android:textColor="@color/texto_primario"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scroll_estadisticas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginEnd="@dimen/margen_pantalla"
+        app:layout_constraintBottom_toTopOf="@id/barra_navegacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_titulo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/margen_pantalla">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_grande"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_entrada"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_entrada">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat_juegos"
+                        android:textColor="@color/texto_secundario"
+                        android:textSize="@dimen/texto_chico" />
+
+                    <TextView
+                        android:id="@+id/tv_juegos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cargando"
+                        android:textColor="@color/texto_primario"
+                        android:textSize="@dimen/texto_numero"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="@dimen/espacio_medio"
+                    android:layout_height="0dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_entrada"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_entrada">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat_completados"
+                        android:textColor="@color/texto_secundario"
+                        android:textSize="@dimen/texto_chico" />
+
+                    <TextView
+                        android:id="@+id/tv_completados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cargando"
+                        android:textColor="@color/texto_primario"
+                        android:textSize="@dimen/texto_numero"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_medio"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_entrada"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_entrada">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat_entradas"
+                        android:textColor="@color/texto_secundario"
+                        android:textSize="@dimen/texto_chico" />
+
+                    <TextView
+                        android:id="@+id/tv_entradas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cargando"
+                        android:textColor="@color/texto_primario"
+                        android:textSize="@dimen/texto_numero"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="@dimen/espacio_medio"
+                    android:layout_height="0dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_entrada"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_entrada">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat_racha"
+                        android:textColor="@color/texto_secundario"
+                        android:textSize="@dimen/texto_chico" />
+
+                    <TextView
+                        android:id="@+id/tv_racha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cargando"
+                        android:textColor="@color/texto_primario"
+                        android:textSize="@dimen/texto_numero"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_enorme"
+                android:text="@string/titulo_por_estado"
+                android:textColor="@color/texto_primario"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/contenedor_estados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_medio"
+                android:orientation="vertical" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_enorme"
+                android:text="@string/titulo_mas_registrado"
+                android:textColor="@color/texto_primario"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/tarjeta_mas_registrado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_medio"
+                android:background="@drawable/fondo_entrada"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_entrada"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/img_mas_registrado"
+                    android:layout_width="@dimen/portada_chica_ancho"
+                    android:layout_height="@dimen/portada_chica_alto"
+                    android:contentDescription="@string/desc_portada_juego"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/portada_placeholder" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacio_grande"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_mas_registrado_nombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/texto_primario"
+                        android:textSize="@dimen/texto_subtitulo"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_mas_registrado_cantidad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/acento"
+                        android:textSize="@dimen/texto_cuerpo" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_sin_mas_registrado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_medio"
+                android:text="@string/sin_mas_registrado"
+                android:textColor="@color/texto_tenue"
+                android:textSize="@dimen/texto_cuerpo"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/barra_navegacion"
+        layout="@layout/barra_navegacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,12 @@ public class Navegacion {
                 abrir(actividad, seccionActual, DIARIO, DiarioActivity.class);
             }
         });
+        navEstadisticas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrir(actividad, seccionActual, ESTADISTICAS, EstadisticasActivity.class);
+            }
+        });
     }
 
     private static void abrir(Activity actividad, int seccionActual, int seccionDestino, Class<?> pantalla) {
@@ -48,6 +54,7 @@ public class Navegacion {
             actividad.finish();
         }
     }
+
 
     private static void marcar(Activity actividad, TextView item, boolean actual) {
         int color = actividad.getColor(actual ? R.color.acento : R.color.texto_secundario);
