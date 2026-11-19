@@ -8,25 +8,41 @@
     android:background="@color/fondo"
     tools:context=".DetalleActivity">
 
+    <TextView
+        android:id="@+id/tv_volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_medio"
+        android:paddingTop="@dimen/espacio_medio"
+        android:paddingEnd="@dimen/espacio_grande"
+        android:paddingBottom="@dimen/espacio_chico"
+        android:text="@string/volver"
+        android:textColor="@color/acento"
+        android:textSize="@dimen/texto_cuerpo"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/encabezado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margen_pantalla"
-        android:layout_marginTop="@dimen/margen_pantalla"
+        android:layout_marginTop="@dimen/espacio_medio"
         android:layout_marginEnd="@dimen/margen_pantalla"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tv_volver">
 
         <ImageView
             android:id="@+id/img_portada"
             android:layout_width="@dimen/portada_ancho"
             android:layout_height="@dimen/portada_alto"
-            android:contentDescription="@string/desc_portada"
+            android:contentDescription="@string/desc_portada_juego"
             android:scaleType="centerCrop"
-            android:src="@drawable/portada_juego" />
+            android:src="@drawable/portada_placeholder" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -39,40 +55,42 @@
                 android:id="@+id/tv_titulo_juego"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/juego_titulo"
+                android:text="@string/cargando"
                 android:textColor="@color/texto_primario"
                 android:textSize="@dimen/texto_titulo"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tv_desarrollador_anio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espacio_chico"
-                android:text="@string/juego_desarrollador_anio"
+                android:text="@string/cargando"
                 android:textColor="@color/texto_secundario"
                 android:textSize="@dimen/texto_cuerpo" />
 
             <TextView
+                android:id="@+id/tv_genero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/juego_genero"
                 android:textColor="@color/texto_secundario"
                 android:textSize="@dimen/texto_cuerpo" />
 
             <TextView
+                android:id="@+id/tv_plataformas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/juego_plataformas"
                 android:textColor="@color/texto_secundario"
                 android:textSize="@dimen/texto_cuerpo" />
 
             <TextView
+                android:id="@+id/tv_puntaje"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espacio_chico"
-                android:text="@string/juego_horas"
                 android:textColor="@color/acento"
-                android:textSize="@dimen/texto_cuerpo" />
+                android:textSize="@dimen/texto_cuerpo"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -110,7 +128,7 @@
         android:ellipsize="end"
         android:lineSpacingExtra="@dimen/interlineado"
         android:maxLines="@integer/lineas_sinopsis"
-        android:text="@string/juego_sinopsis"
+        android:text="@string/cargando"
         android:textColor="@color/texto_secundario"
         android:textSize="@dimen/texto_cuerpo"
         app:layout_constraintEnd_toEndOf="parent"

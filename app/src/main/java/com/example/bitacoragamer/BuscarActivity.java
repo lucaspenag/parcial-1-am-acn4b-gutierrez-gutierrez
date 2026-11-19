@@ -40,7 +40,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class BuscarActivity extends AppCompatActivity {
 
     private static final int ERROR_KEY_INVALIDA = 401;
@@ -49,7 +48,6 @@ public class BuscarActivity extends AppCompatActivity {
     private ProgressBar progreso;
     private TextView tvMensaje;
     private LinearLayout contenedorResultados;
-
 
     private final Set<Integer> idsEnBiblioteca = new HashSet<>();
 
@@ -69,7 +67,6 @@ public class BuscarActivity extends AppCompatActivity {
         tvMensaje = findViewById(R.id.tv_mensaje);
         contenedorResultados = findViewById(R.id.contenedor_resultados);
 
-
         findViewById(R.id.tv_volver).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +80,6 @@ public class BuscarActivity extends AppCompatActivity {
                 buscar();
             }
         });
-
 
         etBusqueda.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -110,14 +106,12 @@ public class BuscarActivity extends AppCompatActivity {
         tvMensaje.setVisibility(View.GONE);
         progreso.setVisibility(View.VISIBLE);
 
-
         RawgClient.getServicio()
                 .buscarJuegos(getString(R.string.rawg_api_key), texto,
                         getResources().getInteger(R.integer.resultados_busqueda))
                 .enqueue(new Callback<RespuestaBusqueda>() {
                     @Override
                     public void onResponse(Call<RespuestaBusqueda> call, Response<RespuestaBusqueda> response) {
-
                         if (isDestroyed()) {
                             return;
                         }
@@ -137,7 +131,6 @@ public class BuscarActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<RespuestaBusqueda> call, Throwable t) {
-
                         progreso.setVisibility(View.GONE);
                         mostrarMensaje(R.string.error_api);
                     }
@@ -148,7 +141,6 @@ public class BuscarActivity extends AppCompatActivity {
         tvMensaje.setText(idTexto);
         tvMensaje.setVisibility(View.VISIBLE);
     }
-
 
     private View crearTarjetaResultado(final JuegoRawg juego) {
         int padding = getResources().getDimensionPixelSize(R.dimen.padding_entrada);
@@ -205,7 +197,6 @@ public class BuscarActivity extends AppCompatActivity {
         return tarjeta;
     }
 
-
     private Button crearBotonResultado(final JuegoRawg juego) {
         final Button boton = new Button(this);
         boton.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.texto_boton));
@@ -233,6 +224,7 @@ public class BuscarActivity extends AppCompatActivity {
                 Toast.makeText(BuscarActivity.this, getString(R.string.juego_agregado, juego.nombre),
                         Toast.LENGTH_SHORT).show();
                 marcarComoAgregado(boton, juego);
+                abrirDetalle(juego);
             }
 
             @Override
@@ -245,10 +237,18 @@ public class BuscarActivity extends AppCompatActivity {
 
     private void marcarComoAgregado(Button boton, final JuegoRawg juego) {
         boton.setText(R.string.ver_juego);
-
-        boton.setEnabled(false);
+        boton.setEnabled(true);
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirDetalle(juego);
+            }
+        });
     }
 
+    private void abrirDetalle(JuegoRawg juego) {
+        startActivity(DetalleActivity.crearIntent(this, juego.id, juego.nombre, juego.urlPortada));
+    }
 
     private void cargarIdsDeLaBiblioteca() {
         Repositorio.obtenerJuegos(new Repositorio.Resultado<List<JuegoGuardado>>() {

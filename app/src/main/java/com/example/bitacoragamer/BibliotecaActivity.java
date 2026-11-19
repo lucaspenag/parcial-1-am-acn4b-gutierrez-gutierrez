@@ -28,7 +28,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class BibliotecaActivity extends AppCompatActivity {
 
     private String filtroActual = null;
@@ -62,7 +61,6 @@ public class BibliotecaActivity extends AppCompatActivity {
         Navegacion.configurar(this, Navegacion.BIBLIOTECA);
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -73,7 +71,6 @@ public class BibliotecaActivity extends AppCompatActivity {
         Repositorio.obtenerJuegos(new Repositorio.Resultado<List<JuegoGuardado>>() {
             @Override
             public void alTerminar(List<JuegoGuardado> datos) {
-
                 if (isDestroyed()) {
                     return;
                 }
@@ -88,7 +85,6 @@ public class BibliotecaActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void mostrarJuegos() {
         contenedorJuegos.removeAllViews();
@@ -107,7 +103,6 @@ public class BibliotecaActivity extends AppCompatActivity {
             tvVacio.setVisibility(View.VISIBLE);
         }
     }
-
 
     private View crearTarjetaJuego(final JuegoGuardado juego) {
         int padding = getResources().getDimensionPixelSize(R.dimen.padding_entrada);
@@ -129,7 +124,6 @@ public class BibliotecaActivity extends AppCompatActivity {
                 getResources().getDimensionPixelSize(R.dimen.portada_chica_alto)));
         portada.setScaleType(ImageView.ScaleType.CENTER_CROP);
         portada.setContentDescription(getString(R.string.desc_portada_juego));
-
         Glide.with(this)
                 .load(juego.portada)
                 .placeholder(R.drawable.portada_placeholder)
@@ -158,9 +152,16 @@ public class BibliotecaActivity extends AppCompatActivity {
         textos.addView(tvEstado);
         tarjeta.addView(portada);
         tarjeta.addView(textos);
+
+        tarjeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(DetalleActivity.crearIntent(
+                        BibliotecaActivity.this, juego.id, juego.nombre, juego.portada));
+            }
+        });
         return tarjeta;
     }
-
 
     private void configurarFiltros() {
         btnTodos = findViewById(R.id.btn_filtro_todos);
@@ -194,7 +195,6 @@ public class BibliotecaActivity extends AppCompatActivity {
         });
     }
 
-
     private void elegirFiltro(String filtro, Button botonElegido) {
         filtroActual = filtro;
         Button[] botones = {btnTodos, btnJugando, btnCompletados, btnPausados};
@@ -205,7 +205,6 @@ public class BibliotecaActivity extends AppCompatActivity {
         mostrarJuegos();
     }
 
-
     private void configurarSalir() {
         findViewById(R.id.tv_salir).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,14 +212,12 @@ public class BibliotecaActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(BibliotecaActivity.this, R.string.sesion_cerrada, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(BibliotecaActivity.this, LoginActivity.class);
-
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
         });
     }
-
 
     private void configurarBotonAgregar() {
         findViewById(R.id.btn_agregar_juego).setOnClickListener(new View.OnClickListener() {
