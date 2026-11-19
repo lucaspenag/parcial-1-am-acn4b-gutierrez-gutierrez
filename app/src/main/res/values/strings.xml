@@ -1,14 +1,6 @@
 <resources>
     <string name="app_name">Bitácora Gamer</string>
 
-    <string name="juego_titulo">Hollow Knight</string>
-    <string name="juego_desarrollador_anio">Team Cherry - 2017</string>
-    <string name="juego_genero">Metroidvania - Acción y aventura</string>
-    <string name="juego_plataformas">PC - Switch - PS4 - Xbox One</string>
-    <string name="juego_horas">12,5 h jugadas</string>
-    <string name="juego_sinopsis">Debajo del pueblo de Bocasucia yace Hallownest, un antiguo reino de insectos en ruinas. Como el Caballero, un pequeño guerrero sin nombre, vas a recorrer cavernas, ciudades olvidadas y jardines venenosos, enfrentarte a decenas de jefes y descubrir qué provocó la caída del reino.</string>
-    <string name="desc_portada">Portada de Hollow Knight</string>
-
     <string name="etiqueta_estado">Estado:</string>
     <string name="estado_jugando">Jugando</string>
     <string name="estado_completado">Completado</string>
@@ -29,11 +21,6 @@
     <string name="entrada_agregada">Entrada agregada</string>
     <string name="entrada_eliminada">Entrada eliminada</string>
     <string name="formato_fecha" translatable="false">dd/MM/yyyy</string>
-
-    <string name="ejemplo_1_fecha">25/09/2026</string>
-    <string name="ejemplo_1_texto">Derroté al Falso Caballero. Me costó 6 intentos.</string>
-    <string name="ejemplo_2_fecha">26/09/2026</string>
-    <string name="ejemplo_2_texto">Llegué a la Ciudad de Lágrimas y me perdí 40 minutos sin mapa.</string>
 
     <string name="volver">‹ Volver</string>
     <string name="cargando">Cargando…</string>
