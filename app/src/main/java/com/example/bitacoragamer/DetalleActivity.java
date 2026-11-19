@@ -20,11 +20,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.bitacoragamer.api.RawgClient;
+import com.example.bitacoragamer.datos.Repositorio;
+import com.example.bitacoragamer.modelo.Entrada;
 import com.example.bitacoragamer.modelo.Estado;
+import com.example.bitacoragamer.modelo.JuegoGuardado;
 import com.example.bitacoragamer.modelo.JuegoRawg;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -33,7 +37,6 @@ import retrofit2.Response;
 
 public class DetalleActivity extends AppCompatActivity {
 
-    // Claves de los extras que recibe esta pantalla
     public static final String EXTRA_ID = "com.example.bitacoragamer.extra.ID";
     public static final String EXTRA_NOMBRE = "com.example.bitacoragamer.extra.NOMBRE";
     public static final String EXTRA_PORTADA = "com.example.bitacoragamer.extra.PORTADA";
@@ -97,7 +100,6 @@ public class DetalleActivity extends AppCompatActivity {
         tvTitulo.setText(nombreJuego);
         mostrarPortada(portadaJuego);
         mostrarEstado();
-        actualizarContador();
 
         findViewById(R.id.tv_volver).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +112,8 @@ public class DetalleActivity extends AppCompatActivity {
         configurarSinopsis();
 
         cargarDetallesDeRawg();
+        cargarEstadoGuardado();
+        cargarEntradas();
     }
 
     private void mostrarPortada(String url) {
@@ -187,6 +191,41 @@ public class DetalleActivity extends AppCompatActivity {
         return texto != null ? texto : getString(R.string.sin_datos);
     }
 
+    private void cargarEstadoGuardado() {
+        Repositorio.obtenerJuego(idJuego, new Repositorio.Resultado<JuegoGuardado>() {
+            @Override
+            public void alTerminar(JuegoGuardado juego) {
+                if (juego != null && juego.estado != null) {
+                    estadoActual = juego.estado;
+                    mostrarEstado();
+                }
+            }
+
+            @Override
+            public void alFallar(Exception error) {
+                Toast.makeText(DetalleActivity.this, R.string.error_cargar, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void cargarEntradas() {
+        Repositorio.obtenerEntradasDeJuego(idJuego, new Repositorio.Resultado<List<Entrada>>() {
+            @Override
+            public void alTerminar(List<Entrada> entradas) {
+                for (int i = entradas.size() - 1; i >= 0; i--) {
+                    mostrarEntrada(entradas.get(i));
+                }
+                actualizarContador();
+            }
+
+            @Override
+            public void alFallar(Exception error) {
+                actualizarContador();
+                Toast.makeText(DetalleActivity.this, R.string.error_cargar, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void configurarBotonAgregar() {
         Button btnAgregar = findViewById(R.id.btn_agregar);
         btnAgregar.setOnClickListener(new View.OnClickListener() {
@@ -199,29 +238,54 @@ public class DetalleActivity extends AppCompatActivity {
                     return;
                 }
 
-                agregarEntrada(fechaDeHoy(), texto);
-                Toast.makeText(DetalleActivity.this, R.string.entrada_agregada, Toast.LENGTH_SHORT).show();
+                guardarEntrada(texto, true);
                 etEntrada.setText("");
             }
         });
     }
 
-    private void agregarEntrada(String fecha, String texto) {
-        LinearLayout tarjeta = crearTarjeta(fecha, texto);
+    private void guardarEntrada(String texto, final boolean avisar) {
+        Entrada nueva = new Entrada(null, idJuego, nombreJuego, portadaJuego, texto, new Date());
+        Repositorio.agregarEntrada(nueva, new Repositorio.Resultado<Entrada>() {
+            @Override
+            public void alTerminar(Entrada guardada) {
+                mostrarEntrada(guardada);
+                actualizarContador();
+                if (avisar) {
+                    Toast.makeText(DetalleActivity.this, R.string.entrada_agregada, Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void alFallar(Exception error) {
+                Toast.makeText(DetalleActivity.this, R.string.error_guardar, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void mostrarEntrada(final Entrada entrada) {
+        final LinearLayout tarjeta = crearTarjeta(formatearFecha(entrada.fecha), entrada.texto);
         tarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contenedorEntradas.removeView(v);
-                cantidadEntradas--;
-                actualizarContador();
-                Toast.makeText(DetalleActivity.this, R.string.entrada_eliminada, Toast.LENGTH_SHORT).show();
+                Repositorio.eliminarEntrada(entrada.idDocumento, new Repositorio.Resultado<Void>() {
+                    @Override
+                    public void alTerminar(Void datos) {
+                        contenedorEntradas.removeView(tarjeta);
+                        cantidadEntradas--;
+                        actualizarContador();
+                        Toast.makeText(DetalleActivity.this, R.string.entrada_eliminada, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void alFallar(Exception error) {
+                        Toast.makeText(DetalleActivity.this, R.string.error_guardar, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
-
         contenedorEntradas.addView(tarjeta, 0);
         cantidadEntradas++;
-        actualizarContador();
     }
 
     private LinearLayout crearTarjeta(String fecha, String texto) {
@@ -250,10 +314,6 @@ public class DetalleActivity extends AppCompatActivity {
         tarjeta.addView(tvFecha);
         tarjeta.addView(tvTexto);
         return tarjeta;
-    }
-
-    private String fechaDeHoy() {
-        return formatearFecha(new Date());
     }
 
     private String formatearFecha(Date fecha) {
@@ -301,9 +361,19 @@ public class DetalleActivity extends AppCompatActivity {
             return;
         }
         final String textoCambio = getString(R.string.entrada_cambio_estado, getString(Estado.texto(nuevoEstado)));
-        estadoActual = nuevoEstado;
-        mostrarEstado();
-        agregarEntrada(fechaDeHoy(), textoCambio);
+        Repositorio.cambiarEstado(idJuego, nuevoEstado, new Repositorio.Resultado<Void>() {
+            @Override
+            public void alTerminar(Void datos) {
+                estadoActual = nuevoEstado;
+                mostrarEstado();
+                guardarEntrada(textoCambio, false);
+            }
+
+            @Override
+            public void alFallar(Exception error) {
+                Toast.makeText(DetalleActivity.this, R.string.error_guardar, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void mostrarEstado() {
