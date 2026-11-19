@@ -20,7 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class DetalleActivity extends AppCompatActivity {
+
     private LinearLayout contenedorEntradas;
     private EditText etEntrada;
 
@@ -34,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvSinopsis;
     private TextView tvVerMas;
     private boolean sinopsisExpandida = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_detalle);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets barras = insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime());
             v.setPadding(barras.left, barras.top, barras.right, barras.bottom);
@@ -66,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
                 String texto = etEntrada.getText().toString().trim();
 
                 if (texto.isEmpty()) {
-                    Toast.makeText(MainActivity.this, R.string.error_entrada_vacia, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetalleActivity.this, R.string.error_entrada_vacia, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 agregarEntrada(fechaDeHoy(), texto);
                 etEntrada.setText("");
-                Toast.makeText(MainActivity.this, R.string.entrada_agregada, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetalleActivity.this, R.string.entrada_agregada, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 contenedorEntradas.removeView(v);
                 cantidadEntradas--;
                 actualizarContador();
-                Toast.makeText(MainActivity.this, R.string.entrada_eliminada, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetalleActivity.this, R.string.entrada_eliminada, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -158,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void cambiarEstado(int textoEstado, int colorEstado) {
         if (textoEstado == estadoActual) {
             Toast.makeText(this, R.string.estado_sin_cambios, Toast.LENGTH_SHORT).show();
