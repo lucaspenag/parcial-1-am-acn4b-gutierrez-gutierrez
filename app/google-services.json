@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "508866972331",
+    "project_id": "bitacora-gamer-d60aa",
+    "storage_bucket": "bitacora-gamer-d60aa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508866972331:android:7492f69b4ac8f6a05945ee",
+        "android_client_info": {
+          "package_name": "com.example.bitacoragamer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWL7u2HIKUwFtlPRq-56q_zfi5HECKOWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
