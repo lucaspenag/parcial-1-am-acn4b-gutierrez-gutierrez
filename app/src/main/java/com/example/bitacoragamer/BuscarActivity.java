@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,8 +25,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.bitacoragamer.api.RawgClient;
+import com.example.bitacoragamer.datos.Repositorio;
+import com.example.bitacoragamer.modelo.Estado;
+import com.example.bitacoragamer.modelo.JuegoGuardado;
 import com.example.bitacoragamer.modelo.JuegoRawg;
 import com.example.bitacoragamer.modelo.RespuestaBusqueda;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +49,9 @@ public class BuscarActivity extends AppCompatActivity {
     private ProgressBar progreso;
     private TextView tvMensaje;
     private LinearLayout contenedorResultados;
+
+
+    private final Set<Integer> idsEnBiblioteca = new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +95,8 @@ public class BuscarActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        cargarIdsDeLaBiblioteca();
     }
 
     private void buscar() {
@@ -95,6 +109,7 @@ public class BuscarActivity extends AppCompatActivity {
         contenedorResultados.removeAllViews();
         tvMensaje.setVisibility(View.GONE);
         progreso.setVisibility(View.VISIBLE);
+
 
         RawgClient.getServicio()
                 .buscarJuegos(getString(R.string.rawg_api_key), texto,
@@ -122,6 +137,7 @@ public class BuscarActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<RespuestaBusqueda> call, Throwable t) {
+
                         progreso.setVisibility(View.GONE);
                         mostrarMensaje(R.string.error_api);
                     }
@@ -132,6 +148,7 @@ public class BuscarActivity extends AppCompatActivity {
         tvMensaje.setText(idTexto);
         tvMensaje.setVisibility(View.VISIBLE);
     }
+
 
     private View crearTarjetaResultado(final JuegoRawg juego) {
         int padding = getResources().getDimensionPixelSize(R.dimen.padding_entrada);
@@ -184,7 +201,68 @@ public class BuscarActivity extends AppCompatActivity {
         textos.addView(tvInfo);
         tarjeta.addView(portada);
         tarjeta.addView(textos);
+        tarjeta.addView(crearBotonResultado(juego));
         return tarjeta;
+    }
+
+
+    private Button crearBotonResultado(final JuegoRawg juego) {
+        final Button boton = new Button(this);
+        boton.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.texto_boton));
+        if (idsEnBiblioteca.contains(juego.id)) {
+            marcarComoAgregado(boton, juego);
+        } else {
+            boton.setText(R.string.agregar_juego);
+            boton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    agregarALaBiblioteca(juego, boton);
+                }
+            });
+        }
+        return boton;
+    }
+
+    private void agregarALaBiblioteca(final JuegoRawg juego, final Button boton) {
+        boton.setEnabled(false);
+        JuegoGuardado nuevo = new JuegoGuardado(juego.id, juego.nombre, juego.urlPortada, Estado.JUGANDO, new Date());
+        Repositorio.agregarJuego(nuevo, new Repositorio.Resultado<Void>() {
+            @Override
+            public void alTerminar(Void datos) {
+                idsEnBiblioteca.add(juego.id);
+                Toast.makeText(BuscarActivity.this, getString(R.string.juego_agregado, juego.nombre),
+                        Toast.LENGTH_SHORT).show();
+                marcarComoAgregado(boton, juego);
+            }
+
+            @Override
+            public void alFallar(Exception error) {
+                boton.setEnabled(true);
+                Toast.makeText(BuscarActivity.this, R.string.error_guardar, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void marcarComoAgregado(Button boton, final JuegoRawg juego) {
+        boton.setText(R.string.ver_juego);
+
+        boton.setEnabled(false);
+    }
+
+
+    private void cargarIdsDeLaBiblioteca() {
+        Repositorio.obtenerJuegos(new Repositorio.Resultado<List<JuegoGuardado>>() {
+            @Override
+            public void alTerminar(List<JuegoGuardado> juegos) {
+                for (JuegoGuardado juego : juegos) {
+                    idsEnBiblioteca.add(juego.id);
+                }
+            }
+
+            @Override
+            public void alFallar(Exception error) {
+            }
+        });
     }
 
     private void ocultarTeclado() {
