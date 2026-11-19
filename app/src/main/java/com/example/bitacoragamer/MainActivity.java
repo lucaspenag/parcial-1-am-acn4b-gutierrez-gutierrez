@@ -16,14 +16,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-
     private LinearLayout contenedorEntradas;
     private EditText etEntrada;
 
@@ -34,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvEstado;
     private int estadoActual = R.string.estado_jugando;
 
-    private static final int LINEA_SINOPSIS = 3;
     private TextView tvSinopsis;
     private TextView tvVerMas;
     private boolean sinopsisExpandida = false;
@@ -43,10 +39,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            Insets barras = insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime());
+            v.setPadding(barras.left, barras.top, barras.right, barras.bottom);
             return insets;
         });
 
@@ -65,19 +60,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void configurarBotonAgregar() {
         Button btnAgregar = findViewById(R.id.btn_agregar);
-        btnAgregar.setOnClickListener( new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               String texto = etEntrada.getText().toString().trim();
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String texto = etEntrada.getText().toString().trim();
 
-               if (texto.isEmpty()) {
-                   Toast.makeText(MainActivity.this, R.string.error_entrada_vacia, Toast.LENGTH_SHORT).show();
-                   return;
-               }
-               agregarEntrada(fechaDeHoy(), texto);
-               etEntrada.setText("");
-               Toast.makeText(MainActivity.this, R.string.entrada_agregada, Toast.LENGTH_SHORT).show();
-           }
+                if (texto.isEmpty()) {
+                    Toast.makeText(MainActivity.this, R.string.error_entrada_vacia, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                agregarEntrada(fechaDeHoy(), texto);
+                etEntrada.setText("");
+                Toast.makeText(MainActivity.this, R.string.entrada_agregada, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -143,19 +139,19 @@ public class MainActivity extends AppCompatActivity {
         Button btnCompletado = findViewById(R.id.btn_completado);
         Button btnPausado = findViewById(R.id.btn_pausado);
 
-        btnJugando.setOnClickListener(new View.OnClickListener(){
+        btnJugando.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cambiarEstado(R.string.estado_jugando, R.color.estado_jugando);
             }
         });
-        btnCompletado.setOnClickListener(new View.OnClickListener(){
+        btnCompletado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cambiarEstado(R.string.estado_completado, R.color.estado_completado);
             }
         });
-        btnPausado.setOnClickListener(new View.OnClickListener(){
+        btnPausado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cambiarEstado(R.string.estado_pausado, R.color.estado_pausado);
@@ -186,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     tvSinopsis.setMaxLines(Integer.MAX_VALUE);
                     tvVerMas.setText(R.string.ver_menos);
                 } else {
-                    tvSinopsis.setMaxLines(LINEA_SINOPSIS);
+                    tvSinopsis.setMaxLines(getResources().getInteger(R.integer.lineas_sinopsis));
                     tvVerMas.setText(R.string.ver_mas);
                 }
             }
